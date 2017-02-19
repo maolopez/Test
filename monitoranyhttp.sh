@@ -18,5 +18,6 @@ tries=$(($res+1))
 wget -d --tries=$tries http://$location -o log
 cat /home/user/scripts/$location/log | grep -i "error" | echo "ACTION REQUIRED: $location is down, check the logs." 
 fi
+  exit
 
 echo "DONE! $res"
