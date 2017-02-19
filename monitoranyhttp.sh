@@ -12,12 +12,12 @@ res=`curl -s -L -I $location | grep HTTP/1.1 | awk '/50*/ {count++} END{print co
 
 if [ "$res" -ge "1" ]
 then
-mkdir /home/user/scripts/$location
-cd /home/user/scripts/$location
-tries=$(($res+1))
-wget -d --tries=$tries http://$location -o log
-cat /home/user/scripts/$location/log | grep -i "error" | echo "ACTION REQUIRED: $location is down, check the logs." 
+          mkdir /home/user/scripts/$location
+          cd /home/user/scripts/$location
+          tries=$(($res+1))
+          wget -d --tries=$tries http://$location -o log
+          cat /home/user/scripts/$location/log | grep -i "error" | echo "ACTION REQUIRED: $location is down, check the logs." 
+          exit
 fi
-  exit
 
 echo "DONE! $res"
