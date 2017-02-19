@@ -2,15 +2,15 @@
 
 location=$1
 
-If  [ -z "$location" ]
+if  [ -z "$location" ]
 then
          echo "please provide the location argument without http://"
          exit
 fi
 
-res=`curl -s -L -I $location | grep HTTP/1.1 | awk '/200/ {count++} END{print count}'`
+res=`curl -s -L -I $location | grep HTTP/1.1 | awk '/50*/ {count++} END{print count}'`
 
-if [ "$res" = "0" ]
+if [ "$res" -ge "1" ]
 then
 mkdir /home/user/scripts/$location
 cd /home/user/scripts/$location
