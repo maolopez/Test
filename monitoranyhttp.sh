@@ -14,7 +14,8 @@ if [ "$res" = "0" ]
 then
 mkdir /home/user/scripts/$location
 cd /home/user/scripts/$location
-wget -drc --tries=2 http://$location/ -o log
+tries=$(($res+1))
+wget -drc --tries=$tries http://$location/ -o log
 cat /home/user/scripts/$location | grep -i "error" | echo "ACTION REQUIRED: $location is down" 
 fi
 
