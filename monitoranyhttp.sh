@@ -15,8 +15,8 @@ then
 mkdir /home/user/scripts/$location
 cd /home/user/scripts/$location
 tries=$(($res+1))
-wget -drc --tries=$tries http://$location/ -o log
-cat /home/user/scripts/$location | grep -i "error" | echo "ACTION REQUIRED: $location is down" 
+wget -d --tries=$tries http://$location -o log
+cat /home/user/scripts/$location | grep -i "error" | echo "ACTION REQUIRED: $location is down, check the logs." 
 fi
 
 echo "DONE! $res"
