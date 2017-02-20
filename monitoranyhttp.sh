@@ -10,7 +10,7 @@ fi
 
 res=$(curl -s -L -I $location | grep HTTP/1.1 | awk '/HTTP\/1\.1\s(5[0-9][0-9])\s/ {count++} END{print count}')
 
-if [ "$res" -ge "1" ]
+if [ "$((res))" -ge "1" ]
 then
           mkdir /home/user/scripts/$location
           cd /home/user/scripts/$location
